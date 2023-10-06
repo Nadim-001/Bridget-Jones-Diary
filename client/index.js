@@ -20,8 +20,8 @@ async function createPost(date, category, textArea) {
     method: "POST",
     body: JSON.stringify({
       date: `${date}`,
-      category: `${category}`,
-      content: `${textArea}`,
+      name: `${category}`,
+      description: `${textArea}`,
     }),
   };
   try {
@@ -33,21 +33,37 @@ async function createPost(date, category, textArea) {
   }
 }
 
-async function getPosts() {
+async function getPosts(route) {
+  //route for oldest, mostrecent and search by date
   //fetch posts
-
-  let tempArr = [];
+  if (route == undefined) {
+    route = "";
+  }
+  const response = await fetch(`http://localhost:3000/entries${route}`);
+  const data = await response.json();
+  console.log(data);
 
   htmlString = ``;
-  for (let i = 0; i < tempArr.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     htmlString += `
-    <div id="post-1" class="entry d-flex flex-column align-items-center">
-        <p>${grabContent}</p>
+    <div id="post-${data[i].entries_id}" class="entry d-flex flex-column align-items-center">
+        <p>${data[i].description}</p>
         <div class="d-flex justify-content-end">
-            <p>${grabDate}</p>
-            <p>${grabCategory}</p>
+            <p>${data[i].date}</p>
+            <p>${data[i].name}</p>
         </div>
     </div>`;
   }
   feedDiv.innerHTML = htmlString;
+}
+getPosts();
+
+async function destroy(id) {
+  const settings = {
+    method: "DELETE",
+  };
+  const fetchResponse = await fetch(`http://localhost:3000/${id}`, settings);
+  const data = fetchResponse.json();
+
+  getPosts();
 }
