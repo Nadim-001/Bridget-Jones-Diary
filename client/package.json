@@ -1,0 +1,25 @@
+{
+  "name": "client-testing-dom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "live-server",
+    "test": "jest --watchAll",
+    "coverage": "jest --coverage"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0",
+    "jsdom": "^22.1.0",
+    "live-server": "^1.2.2"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/__tests__/helpers.js"
+    ]
+  }
+}
