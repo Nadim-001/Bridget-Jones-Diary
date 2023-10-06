@@ -51,20 +51,28 @@
       <div id="sort" class="sort d-flex flex-column align-items-center my-1">
         <h4>Sort by:</h4>
         <div>
-          <button>Oldest</button>
-          <button>Most Recent</button>
+          <button id="oldest">Oldest</button>
+          <button id="recent">Most Recent</button>
           <input
             type="datetime-local"
             id="search-date"
             name="search-date"
             value="2001-01-01T00:00"
           />
-          <button>Search</button>
+          <button id="search">Search</button>
         </div>
       </div>
     </div>
-    <div id="feed">
+    <div id="feed" class="d-flex flex-column align-items-center">
       <!-- POST INSERTED HERE -->
+      <h1>ENTRIES:</h1>
+      <div id="post-1" class="entry d-flex flex-column align-items-center">
+        <p>TEXT</p>
+        <div class="d-flex justify-content-end">
+          <p>Date</p>
+          <p>Category</p>
+        </div>
+      </div>
     </div>
     <script src="index.js"></script>
   </body>

@@ -10,3 +10,8 @@ textarea {
 .sort {
   width: 520px;
 }
+
+.entry {
+  width: 520px;
+  border: 1px solid black;
+}
